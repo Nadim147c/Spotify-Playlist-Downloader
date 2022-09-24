@@ -4,7 +4,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from tkinter import Tk, filedialog
 from dotenv import load_dotenv
 import urllib
-import youtube_dl
+import yt_dlp
 import spotipy
 import eyed3
 import time
@@ -76,7 +76,7 @@ def download_track(track, path):
         "noplaylist": True,
     }
 
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         url = ydl.extract_info(f"ytsearch:{name} lyrics", download=False, )[
             'entries'][0]["webpage_url"]
         ydl.download([url])
@@ -96,6 +96,7 @@ def download_track(track, path):
     audiofile.tag.images.set(3, imagedata, "image/jpeg", u"cover")
 
     audiofile.tag.save()
+    time.sleep(20)
 
 
 url = input("Your Playlist URL:")
@@ -121,4 +122,3 @@ except OSError as err:
 
 for track in tracks:
     download_track(track, path)
-    time.sleep(20)
