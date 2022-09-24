@@ -77,7 +77,7 @@ def download_track(track, path):
     }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        url = ydl.extract_info(f"ytsearch:{name}", download=False, )[
+        url = ydl.extract_info(f"ytsearch:{name} lyrics", download=False, )[
             'entries'][0]["webpage_url"]
         ydl.download([url])
 
