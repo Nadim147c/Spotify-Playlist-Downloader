@@ -1,3 +1,5 @@
 Music
 .cache
 .env
+cache
+__pycache__
